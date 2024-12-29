@@ -1,0 +1,26 @@
+//CSS del nom i logo de l'institució
+@mixin institucion($width){
+    .nombre-institucion{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .imagen-logo{
+            width: $width;
+            justify-self: flex-end;
+        }
+
+        .universidad{
+            color: #FFFFFF;
+            border-left: 0.5vh solid $amarillo1;
+            padding-left: 1vh;
+            .universidad1{
+                align-self: center;
+                font-size: 0.5em;
+            }
+            .universidad2{
+                font-size: 1.75em;
+            }
+        }
+    }
+}

@@ -1,0 +1,279 @@
+@import "variables";//Declaració de variables
+@import "mixins";//El mixin que emplei per fer els nom de la institució amb el logo
+@import "functions";//La funció de lighten
+*{
+    margin:0;
+    font-size: $font-size;
+    font-family: Arial, Helvetica, sans-serif;
+}
+svg:hover{
+    background-color: lighting(#40E0D0, 32%);
+}
+a{
+    //He posat diversos enllaços a la propia institució i a la propia pàgina
+    text-decoration: none;
+}
+button{
+    //Caracterisques generals dels botons
+    width: 60%;
+    background-color: $amarillo1;
+    font-size: 0.8em;
+    padding: 1%;
+}
+button:hover{
+    //Hover dels botons
+    background-color: lighting($gris-oscuro);
+}
+body{
+    //El body ocuparà tot el viewport width
+    width: 100vw;
+    height: auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    /*El primer div dins el body contindrà tot, ocuparà 600 pixels i estarà centrat.*/
+    div{
+        max-width: $max-width;
+    }
+}
+header{
+    /*CSS del header*/
+    background-color: $gris-oscuro;
+    .margin-cabecera{
+        /*Linea groga adalt*/
+        background-color: $amarillo1;
+        width: 100%;
+        height: 1vh;
+    }
+    .cabecera{
+        /*Contingut principal del header*/
+        display: grid;
+        grid-template-columns: 1fr 25% 1fr;
+        grid-template-rows: repeat(4, auto);
+        margin-left: $margin-body;
+        .info-cabecera{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-start;
+            min-height: 55%;
+            .d1, .d2, .d3{
+                grid-column: 1/ span 1;
+            }
+            .d1{
+                grid-row: 1/span 1;
+                h1{
+                    color: #FFFFFF;
+                    font-size: 2.5rem;
+                }
+            }
+            .d2{
+                grid-row: 2/span 1;
+                h2{
+                    color:$amarillo1;
+                    font-size: 1.5rem;
+                }
+            }
+            .d3{
+                grid-row: 3/span 1;
+                width: 100%;
+                button{
+                    width: 100%;
+                }
+            }
+            //mixins
+            @include institucion(100%);
+        }
+        .imagen1{
+            width:100%;
+            align-self: flex-end;
+            grid-column: 2 / span 2;
+            max-height: 50vh;
+        }
+    }   
+}
+main{
+    .mensaje{
+        /*Text davall el header*/
+        margin: $margin-body;
+        height: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        .titulo-mensaje{
+            font-size: 1.5em;
+            margin-bottom: 2%;
+        }
+        .cuerpo-mensaje{
+            line-height: 140%;
+            margin-bottom:3%;
+        }
+        .boton-rep{
+            /*CSS concret d'aquest botó*/
+            font-size: 0.8em;
+            width: 30%;
+            padding:1%;
+            background-color: $amarillo1;
+        }
+        .boton-rep:hover{
+            background-color: lighting($gris-oscuro);
+        }
+    }
+    .grid-table{
+        /*Taula de continguts*/
+        display: flex;
+        flex-direction: column;
+        .grid-header{
+            /*Linea amb la capçalera de la taula*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 5.5vmin;
+            color: #FFFFFF;
+            background-color: $gris-oscuro;
+        }
+        .grid-main{
+            /*Contingut principal de la taula*/
+            min-height: 40vmin;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            .grid-1, .grid-2, .grid-3{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                text-align: center;
+                padding: 3%;
+                svg{
+                    width: 40%;
+                }
+                h1{
+                    font-size: 2em;
+                }
+                
+            }
+            .grid-1{
+                background-color: $amarillo2;
+                grid-column: 1 /span 1;
+                
+            }
+            .grid-2{
+                grid-column: 2/span 1;
+            }
+            .grid-3{
+                grid-column: 3/ span 1;
+                background-color: $amarillo3;
+            }
+        }
+        .table-footer{
+            /*Linea groga baix la taula*/
+            width: 100%;
+            height: 1vmin;
+            background-color: $amarillo1;
+        }
+    }
+    .news-grid{
+        margin:5%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .news-text{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            gap: 5%;
+            h2, p{
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            button{
+                width: 90%;
+                padding: 3%;
+                margin-bottom: 5%;
+            }
+        }
+        .news-image{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+footer{
+    /*CSS del footer*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:auto auto;
+    background-color: $gris-oscuro;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color:white;
+    gap:15%;
+    .footer-uni{
+        grid-column: 1 / span 1;
+        grid-row: 1/ span 1;
+        //mixins
+        @include institucion(80%);
+    }
+    .footer-address{
+        grid-column: 2/ span 1;
+        grid-row: 1/ span 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p{
+            font-size: 0.6em;
+        }
+    }
+    .footer-legal{
+        grid-column: 1 / span 2;
+        grid-row: 2 /span 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding-bottom: 2%;
+        p{
+            font-size: 0.7em;
+        }
+        .subscription{
+            color: $gris;
+        }
+    }
+}
+@media screen and (max-width: 500px){
+//media query per pantalles petites
+    main{
+        .grid-table{
+            .grid-main{
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                .grid-1, .grid-2, .grid-3{
+                    grid-column: 1 /span 1;
+                }
+                .grid-1{
+                    grid-row: 1 / span 1;
+                }
+                .grid-2{
+                    grid-row: 2 / span 1;
+                }
+                .grid-3{
+                    grid-row: 3 / span 1;
+                }
+            }
+            
+        }
+    }
+}
+@media screen and (min-width:600px){
+    //media query per quan el width del vw sigui major de 600px
+    *{
+        font-size: $tamany600;
+    }
+}
